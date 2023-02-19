@@ -93,13 +93,6 @@ function BasicExample() {
                 >
                     Find the cordinates
                 </Link>
-                {/* <Col>
-                    <h1>
-                        {cordi.name}
-                    </h1>
-                    <h2>{cordi.lat}</h2>
-                    <h2>{cordi.lon}</h2>
-                </Col> */}
             </Row>
         </Container>
     );

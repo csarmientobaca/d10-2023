@@ -6,17 +6,17 @@ import { useSelector } from "react-redux"
 
 
 const Home = () => {
-    const cityContent = useSelector(state => state.city.cityContent)
+    const cityContent = useSelector(state => state.city.cityContent[0])
     const [city, setCity] = useState(null);
 
 
     useEffect(() => {
         console.log(cityContent)
-        console.log(cityContent[0].lat)
+        console.log(cityContent.lat)
 
         const fetchData = async () => {
             try {
-                const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${cityContent[0].lat}&lon=${cityContent[0].lon}&appid=afce38265467737eec5cd148f3cabfad`);
+                const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${cityContent.lat}&lon=${cityContent.lon}&appid=afce38265467737eec5cd148f3cabfad`);
                 const data = await response.json();
                 setCity(data)
                 console.log(data)
@@ -36,6 +36,8 @@ const Home = () => {
                 this is home
             </h1>
             {city && <h1>this city is : {city.name}</h1>}
+
+            <Hero />
         </>
 
     )
