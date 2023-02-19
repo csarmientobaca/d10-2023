@@ -11,7 +11,7 @@ const Hero = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch(`https://api.teleport.org/api/urban_areas/slug:${cityContent.name.toLowerCase()}/images/`);
+                const response = await fetch(`https://api.teleport.org/api/urban_areas/slug:${cityContent.name.replace(/\s+/g, '-').toLowerCase()}/images/`);
                 const data = await response.json();
                 console.log(data)
                 setImgCity(data.photos[0].image.mobile)

@@ -2,10 +2,13 @@
 import { useEffect, useState } from "react";
 import Hero from "./Hero";
 import { useSelector } from "react-redux"
+import { useDispatch } from 'react-redux'
 
 
 
 const Home = () => {
+    const dispatch = useDispatch()
+
     const cityContent = useSelector(state => state.city.cityContent[0])
     const [city, setCity] = useState(null);
 
@@ -16,7 +19,7 @@ const Home = () => {
 
         const fetchData = async () => {
             try {
-                const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${cityContent.lat}&lon=${cityContent.lon}&appid=afce38265467737eec5cd148f3cabfad`);
+                const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${cityContent.lat}&lon=${cityContent.lon}&appid=afce38265467737eec5cd148f3cabfad&units=metric`);
                 const data = await response.json();
                 setCity(data)
                 console.log(data)
