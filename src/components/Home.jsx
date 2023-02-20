@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Hero from "./Hero";
 import { useSelector } from "react-redux"
 import { useDispatch } from 'react-redux'
+import { Container } from "react-bootstrap";
 
 
 
@@ -43,12 +44,14 @@ const Home = () => {
     return (
 
         <>
-            <h1>
+            {/* <h1>
                 this is home
             </h1>
-            {city && <h1>this city is : {city.name}</h1>}
+            {city && <h1>this city is : {city.name}</h1>} */}
+            <Container>
 
-            <Hero />
+                <Hero />
+            </Container>
         </>
 
     )
