@@ -2,3 +2,9 @@
     height: 1050px;
     width: 960px;
 }
+
+.mask {
+    border-radius: 50px;
+    padding-bottom: 5rem;
+    padding-top: 5rem;
+}
