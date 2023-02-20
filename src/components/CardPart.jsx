@@ -14,8 +14,6 @@ function CardPart() {
             <Card className='p-3 my-3' style={{ width: '18rem' }}>
 
                 <Card.Body>
-                    <Card.Title>Last City You Visit</Card.Title>
-
                     <Card.Title>{cityContent?.name}</Card.Title>
                     <Card.Text>
                         {cityData?.weather[0].description},Temp.
