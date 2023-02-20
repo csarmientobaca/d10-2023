@@ -4,10 +4,14 @@ import { useState, useEffect } from 'react';
 import { Container, Col, Row } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import CardPart from './CardPart';
 import "./SearchHome.css"
+import { useSelector } from 'react-redux';
 
 
 function BasicExample() {
+    const cityContent = useSelector(state => state.city.cityContent[0])
+
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -67,7 +71,12 @@ function BasicExample() {
                     </Form>
                 </Col>
             </Row>
-
+            <Row>
+                <h3 className='danger'>Last city you visit:</h3>
+                {
+                    cityContent && <Col><CardPart /></Col>
+                }
+            </Row>
         </Container>
     );
 }

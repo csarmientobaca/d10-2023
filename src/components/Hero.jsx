@@ -44,7 +44,7 @@ const Hero = () => {
                             <h1 className='mb-3'>{cityContent.name}</h1>
                             <h2 className='mb-3'>{cityData?.weather[0].main} (with/or) {cityData?.weather[0].description}</h2>
 
-                            <h4 className='mb-3'>{cityData?.main.temp} °</h4>
+                            <h4 className='mb-3'>Temp {cityData?.main.temp} °</h4>
                             <Link to="/">
                                 <a className='btn btn-outline-light btn-lg' href='#!' role='button'>
                                     Change city
