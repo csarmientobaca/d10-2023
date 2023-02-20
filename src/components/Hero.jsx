@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux"
 import { useEffect, useState } from "react";
 import "./Hero.css"
+import { Link } from "react-router-dom";
 
 const Hero = () => {
     const cityContent = useSelector(state => state.city.cityContent[0])
@@ -44,9 +45,11 @@ const Hero = () => {
                             <h2 className='mb-3'>{cityData?.weather[0].main} (with/or) {cityData?.weather[0].description}</h2>
 
                             <h4 className='mb-3'>{cityData?.main.temp} °</h4>
-                            <a className='btn btn-outline-light btn-lg' href='#!' role='button'>
-                                Call to action
-                            </a>
+                            <Link to="/">
+                                <a className='btn btn-outline-light btn-lg' href='#!' role='button'>
+                                    Change city
+                                </a>
+                            </Link>
                         </div>
                     </div>
                 </div>

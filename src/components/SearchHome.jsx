@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react';
 import { Container, Col, Row } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import "./SearchHome.css"
+
 
 function BasicExample() {
     const dispatch = useDispatch();
@@ -43,7 +45,7 @@ function BasicExample() {
     }, [cordi, dispatch, navigate]);
 
     return (
-        <Container>
+        <Container className='my-5 mx-5'>
             <Row>
                 <Col>
                     <Form onSubmit={handleSubmit}>
@@ -59,17 +61,13 @@ function BasicExample() {
                                 Insert your city, and we will handle the rest.
                             </Form.Text>
                         </Form.Group>
-                        <Button variant="primary" type="submit">
+                        <Button variant="warning" type="submit">
                             Find the cordinates
                         </Button>
                     </Form>
                 </Col>
             </Row>
-            <Row>
-                <Link to="/home" variant="primary">
-                    Find the cordinates
-                </Link>
-            </Row>
+
         </Container>
     );
 }

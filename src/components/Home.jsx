@@ -44,10 +44,7 @@ const Home = () => {
     return (
 
         <>
-            {/* <h1>
-                this is home
-            </h1>
-            {city && <h1>this city is : {city.name}</h1>} */}
+
             <Container>
 
                 <Hero />
