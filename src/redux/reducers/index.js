@@ -1,6 +1,9 @@
 const initialState = {
     city: {
         cityContent: []
+    },
+    dataCity: {
+        main: []
     }
 }
 const mainReducer = (state = initialState, action) => {
@@ -15,6 +18,14 @@ const mainReducer = (state = initialState, action) => {
                 }
             }
 
+        case "ADD_MAIN":
+            return {
+                ...state,
+                dataCity: {
+                    ...state.dataCity,
+                    main: [action.payload]
+                }
+            }
         default:
             return state
     }

@@ -2,56 +2,51 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useState, useEffect } from 'react';
 import { Container, Col, Row } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux'
-
-
+import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 function BasicExample() {
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const [cityName, setCityName] = useState("");
-
     const [cordi, setCordi] = useState([]);
 
     const handleChange = (e) => {
-        setCityName(e.target.value)
-    }
-
+        setCityName(e.target.value);
+    };
 
     const handleSubmit = async (e) => {
-        e.preventDefault()
+        e.preventDefault();
 
         try {
-            const response = await fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=afce38265467737eec5cd148f3cabfad`)
+            const response = await fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=afce38265467737eec5cd148f3cabfad`);
             if (response.ok) {
-                const data = await response.json()
-                setCordi(data[0])
+                const data = await response.json();
+                setCordi(data[0]);
             } else {
-                alert('Error fetching results')
+                alert('Error fetching results');
             }
         } catch (error) {
-            console.log(error)
+            console.log(error);
         }
-        console.log(cordi)
-    }
-
-
+    };
 
     useEffect(() => {
-        dispatch({
-            type: "ADD_CITY",
-            payload: cordi,
-        });
-    }, [cordi, dispatch]);
+        if (cordi.length !== 0) {
+            dispatch({
+                type: "ADD_CITY",
+                payload: cordi,
+            });
+            navigate("/home");
+        }
+    }, [cordi, dispatch, navigate]);
 
     return (
         <Container>
             <Row>
                 <Col>
-                    <Form
-                        onSubmit={handleSubmit}
-                    >
+                    <Form onSubmit={handleSubmit}>
                         <Form.Group className="mb-3" controlId="formBasicEmail">
                             <Form.Label>Where is sunny?</Form.Label>
                             <Form.Control
@@ -64,26 +59,14 @@ function BasicExample() {
                                 Insert your city, and we will handle the rest.
                             </Form.Text>
                         </Form.Group>
-
-                        <Link to="/home">
-                            <Button
-                                variant="primary"
-                                type="submit"
-                            >
-                                Find the cordinates
-                            </Button>
-                        </Link>
-
+                        <Button variant="primary" type="submit">
+                            Find the cordinates
+                        </Button>
                     </Form>
                 </Col>
             </Row>
             <Row>
-
-                <Link
-                    to="/home"
-                    variant="primary"
-
-                >
+                <Link to="/home" variant="primary">
                     Find the cordinates
                 </Link>
             </Row>

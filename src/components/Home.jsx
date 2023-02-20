@@ -8,15 +8,12 @@ import { useDispatch } from 'react-redux'
 
 const Home = () => {
     const dispatch = useDispatch()
-
     const cityContent = useSelector(state => state.city.cityContent[0])
     const [city, setCity] = useState(null);
 
 
     useEffect(() => {
         console.log(cityContent)
-        console.log(cityContent.lat)
-
         const fetchData = async () => {
             try {
                 const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${cityContent.lat}&lon=${cityContent.lon}&appid=afce38265467737eec5cd148f3cabfad&units=metric`);
@@ -29,8 +26,19 @@ const Home = () => {
         };
 
         fetchData();
+
+        // dispatch({
+        //     type: "ADD_MAIN",
+        //     payload: city,
+        // });
     }, [cityContent]);
 
+    useEffect(() => {
+        dispatch({
+            type: "ADD_MAIN",
+            payload: city,
+        });
+    }, [city])
 
     return (
 
